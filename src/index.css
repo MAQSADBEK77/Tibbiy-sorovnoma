@@ -1,0 +1,20 @@
+@import url(https://fonts.googleapis.com/css2?family=Lato:wght@100;200;300;400;500;600;800;900&display=swap);
+body {
+  font-family: "Lato", sans-serif;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.active {
+  color: rgb(100, 44, 152);
+}
+.recharts-wrapper, .chart-item {
+  max-width: 470px;
+  margin: 0 auto;
+}
