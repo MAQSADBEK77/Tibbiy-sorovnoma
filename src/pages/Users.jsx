@@ -23,7 +23,7 @@ function Users() {
             {data != null &&
               data.data.map((user) => {
                 return (
-                  <tr>
+                  <tr key={user.id}>
                     <th>{user.id}</th>
                     <td>
                       {user.last_name} {user.name} {user.middle_name}
@@ -54,7 +54,7 @@ function Users() {
       </div>
       <div className="flex justify-between mt-10">
         <h2 className="text-2xl">
-          Jami foydalanuvchilar : {data.data.length}ta
+          Jami foydalanuvchilar : {data != null && data.data.length}ta
         </h2>
       </div>
     </div>
