@@ -1,11 +1,13 @@
 import { useFetch } from "../hooks/useFetch";
+import Pending from "../components/Pending";
 function Users() {
-  const { data } = useFetch(
+  const { data, isPending } = useFetch(
     "https://tibbiy-sorovnoma.onrender.com/user/?id=0&tg_id=0&page=1&limit=5"
   );
   console.log(data);
   return (
     <div className="container">
+      <Pending isPending={isPending} />
       <div className="overflow-x-auto mt-3">
         <table className="table table-xs table-pin-rows table-pin-cols">
           <thead>
@@ -53,7 +55,7 @@ function Users() {
         </table>
       </div>
       <div className="flex justify-between mt-10">
-        <h2 className="text-2xl">
+        <h2 className="text-xl">
           Jami foydalanuvchilar : {data != null && data.data.length}ta
         </h2>
       </div>

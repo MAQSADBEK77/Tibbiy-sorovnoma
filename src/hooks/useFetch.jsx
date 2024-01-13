@@ -4,7 +4,7 @@ export const useFetch = (url, method = "GET") => {
   const headers = {
     accept: "application/json",
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHJpbmciLCJleHAiOjIyMTk2NTAzMjd9.HcgDSNxDj1g6QWzsRdI0EXI7EtHD5_YckZnoo8ekdeY",
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHJpbmciLCJleHAiOjIyMjExMjM3NjF9.Il-1zhRwn601QwiW0VL9szFZlnVW7_e3c0u0vOMW60w",
   };
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(false);
