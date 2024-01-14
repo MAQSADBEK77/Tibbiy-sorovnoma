@@ -51,7 +51,7 @@ function Home() {
               },
             ];
             return (
-              <RenderBarChart
+              <RenderBarChart key={item.id}
                 data={resault}
                 title={`${item.id + 1}-Test natijalari`}
                 quiz={item.question_name}
