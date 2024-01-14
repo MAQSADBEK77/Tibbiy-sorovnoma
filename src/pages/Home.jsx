@@ -8,13 +8,6 @@ function Home() {
   );
   const quetions = data && data.data;
   const testName = data && quetions[1].topic_name;
-  const data1 = [
-    { name: "A variant", uv: 200, pv: 2400, amt: 2400 },
-    { name: "B variant", uv: 400, pv: 2400, amt: 2400 },
-    { name: "D variant", uv: 150, pv: 2400, amt: 2400 },
-    { name: "E variant", uv: 60, pv: 2400, amt: 2400 },
-    { name: "F variant", uv: 100, pv: 2400, amt: 2400 },
-  ];
   return (
     <div className="container">
       <Pending isPending={isPending} />
@@ -39,19 +32,19 @@ function Home() {
                 amt: 2400,
               },
               {
-                name: "C variant",
+                name: "D variant",
                 uv: item.answer_c,
                 pv: 2400,
                 amt: 2400,
               },
               {
-                name: "D variant",
+                name: "E variant",
                 uv: item.answer_d,
                 pv: 2400,
                 amt: 2400,
               },
               {
-                name: "E variant",
+                name: "F variant",
                 uv: item.answer_e,
                 pv: 2400,
                 amt: 2400,
