@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 
-export const useFetch = (url, method = "GET") => {
+export const useFetch = (url, method = "GET", postDataArray = null) => {
   const headers = {
     accept: "application/json",
     Authorization:
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHJpbmciLCJleHAiOjIyMjExMjM3NjF9.Il-1zhRwn601QwiW0VL9szFZlnVW7_e3c0u0vOMW60w",
+    body: postDataArray,
   };
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(false);
@@ -34,8 +35,10 @@ export const useFetch = (url, method = "GET") => {
         if (!req.ok) {
           throw new Error(req.statusText);
         }
-        const data = await req.json();
-        setData(data);
+        if (method === "GET") {
+          const data = await req.json();
+          setData(data);
+        }
         setIsPending(false);
         setError(null);
       } catch (err) {
@@ -58,5 +61,9 @@ export const useFetch = (url, method = "GET") => {
     }
     getData(deleteData);
   }, [url, method, postData]);
-  return { data, isPending, error, postGetData };
+  if (method === "GET") {
+    return { data, isPending, error, postGetData };
+  } else {
+    return isPending, error, postGetData;
+  }
 };

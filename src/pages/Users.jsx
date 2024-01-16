@@ -27,7 +27,7 @@ function Users() {
                 return (
                   <tr key={user.id}>
                     <th>{user.id}</th>
-                    <td>
+                    <td >
                       {user.last_name} {user.name} {user.middle_name}
                     </td>
                     <td>{user.username}</td>

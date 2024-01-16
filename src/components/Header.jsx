@@ -1,51 +1,69 @@
 import { NavLink } from "react-router-dom";
 function Header() {
   return (
-    <div className="container">
-      <div className="navbar bg-base-100">
-        <div className="flex-1">
-          <a className="btn btn-ghost text-xl">IQRO Test</a>
-        </div>
-        <div className="flex-none gap-6">
-          <NavLink to="/" className="dropdown dropdown-end">
-            Statistika
-          </NavLink>
-          <NavLink to="/addtest" className="dropdown dropdown-end">
-            Test qo'shish
-          </NavLink>
-          <NavLink to="/users" className="dropdown dropdown-end">
-            Foydalanuvchilar
-          </NavLink>
-          <div className="dropdown dropdown-end">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                />
-              </div>
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+    <div className="text-2xl bg-base-200 fixed left-0 top-0 bottom-0">
+      <a className="mt-6 btn btn-primary text-2xl ml-6">IQRO Admin</a>
+      <ul className="menu w-72 rounded-box text-xl gap-4">
+        <li>
+          <details>
+            <summary>Users</summary>
+            <ul className="flex flex-col gap-2">
               <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
+                <NavLink to="/users">Statistika</NavLink>
               </li>
               <li>
-                <a>Settings</a>
+                <a>O'chirish</a>
               </li>
               <li>
-                <a>Logout</a>
+                <a>Qo'shish</a>
               </li>
             </ul>
-          </div>
+          </details>
+        </li>
+        <li>
+          <details>
+            <summary>Testlar</summary>
+            <ul className="flex flex-col gap-2">
+              <li>
+                <a>Barcha testlar</a>
+              </li>
+              <li>
+                <NavLink to="/addtest">Test qo'shish</NavLink>
+              </li>
+              <li>
+                <a>Test o'chirish</a>
+              </li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details open>
+            <summary>Test natijalari</summary>
+            <ul className="flex flex-col gap-2">
+              <li>
+                <NavLink to="/">Barcha natijalar</NavLink>
+              </li>
+              <li>
+                <a>Natijalar qo'shish</a>
+              </li>
+              <li>
+                <a>Natijalarni o'chirish</a>
+              </li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+      <div
+        tabIndex={0}
+        role="button"
+        className="btn btn-ghost btn-circle avatar absolute bottom-14 left-3">
+        <div className="w-14 rounded-full">
+          <img
+            alt="Tailwind CSS Navbar component"
+            src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+          />
         </div>
+        <p>Ism Familiya</p>
       </div>
     </div>
   );

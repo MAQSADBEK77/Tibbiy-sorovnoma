@@ -5,9 +5,9 @@ import Header from "../components/Header";
 
 function MainLayout() {
   return (
-    <div className="dark:bg-boxdark-2 dark:text-bodydark">
+    <div className="dark:bg-boxdark-2 dark:text-bodydark flex">
       <Header />
-      <main>
+      <main className="w-[65%] absolute left-1/2 -translate-x-1/3">
         <Outlet />
       </main>
     </div>
