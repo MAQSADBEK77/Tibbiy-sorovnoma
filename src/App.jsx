@@ -12,12 +12,14 @@ import MainLayout from "./layout/MainLayout";
 import Home from "./pages/Home";
 import AddTest from "./pages/AddTest";
 import Users from './pages/Users'
+import AllTest from "./pages/AllTest";
 function App() {
   const routes = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home />} />
-        <Route path="addtest" element={<AddTest />} />
+        <Route path="addtest" element={<AddTest />} />{" "}
+        <Route path="alltest" element={<AllTest />} /> <Route path="addtest" element={<AddTest />} />
         <Route path="users" element={<Users />} />
       </Route>
     )

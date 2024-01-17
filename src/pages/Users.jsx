@@ -4,7 +4,6 @@ function Users() {
   const { data, isPending } = useFetch(
     "https://tibbiy-sorovnoma.onrender.com/user/?id=0&tg_id=0&page=1&limit=5"
   );
-  console.log(data);
   return (
     <div className="container">
       <Pending isPending={isPending} />

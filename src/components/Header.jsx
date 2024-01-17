@@ -3,7 +3,7 @@ function Header() {
   return (
     <div className="text-2xl bg-base-200 fixed left-0 top-0 bottom-0">
       <a className="mt-6 btn btn-primary text-2xl ml-6">IQRO Admin</a>
-      <ul className="menu w-72 rounded-box text-xl gap-4">
+      <ul className="menu w-72 rounded-box text-xl gap-4 mt-5">
         <li>
           <details>
             <summary>Users</summary>
@@ -25,14 +25,12 @@ function Header() {
             <summary>Testlar</summary>
             <ul className="flex flex-col gap-2">
               <li>
-                <a>Barcha testlar</a>
+                <NavLink to="/alltest">Barcha testlar</NavLink>
               </li>
               <li>
                 <NavLink to="/addtest">Test qo'shish</NavLink>
               </li>
-              <li>
-                <a>Test o'chirish</a>
-              </li>
+              <li></li>
             </ul>
           </details>
         </li>

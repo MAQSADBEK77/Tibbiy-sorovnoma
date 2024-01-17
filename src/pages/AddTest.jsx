@@ -22,7 +22,7 @@ function AddTest() {
       option_f: answer_f,
     };
     const { postGetData } = useFetch(
-      "https://tibbiy-sorovnoma.onrender.com/question/add",
+      "https://tibbiy-sorovnomaa.onrender.com/question/add",
       "POST",
       quizArray
     );
