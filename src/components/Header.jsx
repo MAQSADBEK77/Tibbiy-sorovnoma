@@ -10,12 +10,9 @@ function Header() {
             <ul className="flex flex-col gap-2">
               <li>
                 <NavLink to="/users">Statistika</NavLink>
-              </li>
+              </li> 
               <li>
-                <a>O'chirish</a>
-              </li>
-              <li>
-                <a>Qo'shish</a>
+                <NavLink to="/adduser">Qo'shish</NavLink>
               </li>
             </ul>
           </details>
@@ -40,9 +37,6 @@ function Header() {
             <ul className="flex flex-col gap-2">
               <li>
                 <NavLink to="/">Barcha natijalar</NavLink>
-              </li>
-              <li>
-                <a>Natijalar qo'shish</a>
               </li>
               <li>
                 <a>Natijalarni o'chirish</a>

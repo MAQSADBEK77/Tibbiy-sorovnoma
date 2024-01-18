@@ -13,6 +13,7 @@ import Home from "./pages/Home";
 import AddTest from "./pages/AddTest";
 import Users from './pages/Users'
 import AllTest from "./pages/AllTest";
+import AddUser from "./pages/AddUser";
 function App() {
   const routes = createBrowserRouter(
     createRoutesFromElements(
@@ -21,6 +22,7 @@ function App() {
         <Route path="addtest" element={<AddTest />} />{" "}
         <Route path="alltest" element={<AllTest />} /> <Route path="addtest" element={<AddTest />} />
         <Route path="users" element={<Users />} />
+        <Route path="adduser" element={<AddUser />} />
       </Route>
     )
   );

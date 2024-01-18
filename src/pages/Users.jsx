@@ -13,6 +13,7 @@ function Users() {
             <tr>
               <th></th>
               <td>Ism Familiya sharifi</td>
+              <td>Telefon raqami</td>
               <td>Telegram username</td>
               <td>Yashah manzili</td>
               <td>Tug'ilgan kun</td>
@@ -26,9 +27,10 @@ function Users() {
                 return (
                   <tr key={user.id}>
                     <th>{user.id}</th>
-                    <td >
+                    <td>
                       {user.last_name} {user.name} {user.middle_name}
                     </td>
+                    <td>{user.phone_number}</td>
                     <td>{user.username}</td>
                     <td>
                       {user.region} {user.village} {user.city}
@@ -36,6 +38,14 @@ function Users() {
                     <td>{user.birth_day}</td>
                     <td>{user.tg_id}</td>
                     <th>{user.id}</th>
+                    <div className="flex gap-2">
+                      <button className="btn btn-primary btn-sm text-sm">
+                        EDIT
+                      </button>{" "}
+                      <button className="btn btn-error btn-sm text-sm">
+                        DELETE
+                      </button>
+                    </div>
                   </tr>
                 );
               })}
@@ -44,6 +54,7 @@ function Users() {
             <tr>
               <th></th>
               <td>Ism Familiya sharifi</td>
+              <td>Telefon raqami</td>
               <td>Telegram username</td>
               <td>Yashah manzili</td>
               <td>Tug'ilgan kun</td>
