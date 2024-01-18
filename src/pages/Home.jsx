@@ -1,15 +1,24 @@
 import RenderBarChart from "../components/RenderBarChart";
 import MiniSelect from "../components/MiniSelect";
+import { useState } from "react";
+import Pagination from "../components/Pagination";
 import { useFetch } from "../hooks/useFetch";
 import Pending from "../components/Pending";
 function Home() {
-  const { data, isPending, error } = useFetch(
-    "https://tibbiy-sorovnomaa.onrender.com/statistika"
+  const [URL, setURL] = useState(
+    "https://tibbiy-sorovnomaa.onrender.com/statistika/?id=0&page=1&limit=8"
   );
+  const { data, isPending } = useFetch(URL);
   const quetions = data && data.data;
   const testName = data && quetions[1].topic_name;
+  function changePagination(value) {
+    setURL(
+      `https://tibbiy-sorovnomaa.onrender.com/question/?page=${value}&limit=8`
+    );
+  }
+  console.log(quetions);
   return (
-    <div className="container">
+    <div className="flex flex-col items-end">
       <Pending isPending={isPending} />
       <div className="mt-8 mb-5">
         {" "}
@@ -60,6 +69,9 @@ function Home() {
             );
           })}
       </div>
+      {data && (
+        <Pagination value={data.pages} changePagination={changePagination} />
+      )}
     </div>
   );
 }
