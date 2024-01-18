@@ -4,7 +4,7 @@ import { useFetch } from "../hooks/useFetch";
 import Pending from "../components/Pending";
 function Home() {
   const { data, isPending, error } = useFetch(
-    "https://tibbiy-sorovnomaa.onrender.com/statistika/?id=0&page=1&limit=5"
+    "https://tibbiy-sorovnomaa.onrender.com/statistika"
   );
   const quetions = data && data.data;
   const testName = data && quetions[1].topic_name;
@@ -51,7 +51,8 @@ function Home() {
               },
             ];
             return (
-              <RenderBarChart key={item.id}
+              <RenderBarChart
+                key={item.id}
                 data={resault}
                 title={`${item.id + 1}-Test natijalari`}
                 quiz={item.question_name}

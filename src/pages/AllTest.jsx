@@ -2,7 +2,7 @@ import { useFetch } from "../hooks/useFetch";
 import Pending from "../components/Pending";
 function AllTest() {
   const { data, isPending } = useFetch(
-    "https://tibbiy-sorovnomaa.onrender.com/question/"
+    "https://tibbiy-sorovnomaa.onrender.com/question"
   );
   return (
     <div className="flex justify-between flex-wrap gap-6 mt-10">
