@@ -114,7 +114,7 @@ function AddUser() {
         />{" "}
         <input
           onChange={(e) => {
-            setId(e.target.value);
+            setPassword(e.target.value);
           }}
           required
           type="password"
