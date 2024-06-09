@@ -2,18 +2,18 @@ import RenderBarChart from "../components/RenderBarChart";
 import MiniSelect from "../components/MiniSelect";
 import { useState } from "react";
 import Pagination from "../components/Pagination";
-import { useFetch } from "../hooks/useFetch";
+import useFetch from "../hooks/useFetch";
 import Pending from "../components/Pending";
 function Home() {
   const [URL, setURL] = useState(
-    "https://tibbiy-sorovnomaa.onrender.com/statistika/?id=0&page=1&limit=8"
+    "http://api.onko-fergana.uz/statistika/?page=1&limit=5"
   );
   const { data, isPending } = useFetch(URL);
   const quetions = data && data.data;
   const testName = data && quetions[1].topic_name;
   function changePagination(value) {
     setURL(
-      `https://tibbiy-sorovnomaa.onrender.com/question/?page=${value}&limit=8`
+      `http://api.onko-fergana.uz/statistika/?id=0&topic_id=0&question_id=0&page=${value}&limit=5`
     );
   }
   console.log(quetions);
@@ -63,7 +63,7 @@ function Home() {
               <RenderBarChart
                 key={item.id}
                 data={resault}
-                title={`${item.id + 1}-Test natijalari`}
+                title={`${item.id}-Test natijalari`}
                 quiz={item.question_name}
               />
             );

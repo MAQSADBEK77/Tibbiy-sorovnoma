@@ -1,6 +1,6 @@
 import { useState } from "react";
 import MiniSelect from "../components/MiniSelect";
-import { useFetch } from "../hooks/useFetch";
+import useFetch from "../hooks/useFetch";
 function AddTest() {
   const [quiz, setQuiz] = useState(null);
   const [answer_a, setAnswerA] = useState(null);
@@ -22,7 +22,7 @@ function AddTest() {
       option_f: answer_f,
     };
     const { postGetData } = useFetch(
-      "https://tibbiy-sorovnomaa.onrender.com/question/add",
+      "https://bioetika.onrender.com/question/add",
       "POST",
       quizArray
     );

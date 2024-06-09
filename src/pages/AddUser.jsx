@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useFetch } from "../hooks/useFetch";
+import  useFetch  from "../hooks/useFetch";
 function AddUser() {
   const [name, setName] = useState(null);
   const [LastName, setLastName] = useState(null);
@@ -10,36 +10,41 @@ function AddUser() {
   const [brithday, setBrithday] = useState(null);
   const [id, setId] = useState(null);
   const [password, setPassword] = useState(null);
-  function submitForm(e) {
+  const quizArray = {
+    roll: "string",
+    name,
+    last_name: LastName,
+    middle_name: MiddleName,
+    phone_number: 0,
+    tg_id: id,
+    tall: 0,
+    weight: 0,
+    region: location,
+    city: "",
+    village: "",
+    home_number: 0,
+    birth_day: brithday,
+    username: tg_username,
+    password,
+  };
+  const { data, loading, error } = useFetch(
+    "https://bioetika.onrender.com/user/add",
+    {
+      method: "POST",
+      body: postData,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const handleChange = (e) => {
     e.preventDefault();
-    const quizArray = {
-      roll: "string",
-      name,
-      last_name: LastName,
-      middle_name: MiddleName,
-      phone_number: 0,
-      tg_id: id,
-      tall: 0,
-      weight: 0,
-      region: location,
-      city: "",
-      village: "",
-      home_number: 0,
-      birth_day: brithday,
-      username: tg_username,
-      password,
-    };
-    const { postGetData } = useFetch(
-      "https://tibbiy-sorovnomaa.onrender.com/question/add",
-      "POST",
-      quizArray
-    );
-    console.log(postGetData);
-  }
+    quizArray({ ...quizArray });
+  };
   return (
     <div className="max-w-xl m-auto flex flex-col gap-y-8">
       <h1 className="text-4xl text-center mt-10">Yangi USER qo'shish</h1>
-      <form onSubmit={(e) => submitForm(e)} className="flex flex-col gap-y-8">
+      <form onSubmit={(e) => handleChange(e)} className="flex flex-col gap-y-8">
         <input
           onChange={(e) => {
             setName(e.target.value);

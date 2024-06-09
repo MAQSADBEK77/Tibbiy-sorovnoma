@@ -1,9 +1,7 @@
-import { useFetch } from "../hooks/useFetch";
+import useFetch from "../hooks/useFetch";
 import Pending from "../components/Pending";
 function Users() {
-  const { data, isPending } = useFetch(
-    "https://tibbiy-sorovnoma.onrender.com/user/?id=0&tg_id=0&page=1&limit=5"
-  );
+  const { data, isPending } = useFetch("http://api.onko-fergana.uz/user");
   return (
     <div className="container">
       <Pending isPending={isPending} />
@@ -25,7 +23,7 @@ function Users() {
             {data != null &&
               data.data.map((user) => {
                 return (
-                  <tr key={user.id}>
+                  <tr className="border-b-orange-500" key={user.id}>
                     <th>{user.id}</th>
                     <td>
                       {user.last_name} {user.name} {user.middle_name}
@@ -38,10 +36,8 @@ function Users() {
                     <td>{user.birth_day}</td>
                     <td>{user.tg_id}</td>
                     <th>{user.id}</th>
-                    <div className="flex gap-2">
-                      <button className="btn btn-primary btn-sm text-sm">
-                        EDIT
-                      </button>{" "}
+                    <div className="flex gap-2 my-2">
+                      {" "}
                       <button className="btn btn-error btn-sm text-sm">
                         DELETE
                       </button>

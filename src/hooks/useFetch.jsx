@@ -1,69 +1,65 @@
 import { useState, useEffect } from "react";
 
-export const useFetch = (url, method = "GET", postDataArray = null) => {
-  const headers = {
-    accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHJpbmciLCJleHAiOjIyMjExMjM3NjF9.Il-1zhRwn601QwiW0VL9szFZlnVW7_e3c0u0vOMW60w",
-    body: postDataArray,
-  };
+function useFetch(url, options = {}) {
+  useState;
   const [data, setData] = useState(null);
-  const [isPending, setIsPending] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [postData, setPostData] = useState(null);
-  const [deleteData, setDeleteData] = useState(null);
-  const postGetData = (data) => {
-    if (method == "POST") {
-      const config = {
-        method: method,
-        headers: headers,
-        body: JSON.stringify(data),
-      };
-      setPostData(config);
-    } else if (method == "DELETE") {
-      const config = {
-        method: method,
-      };
-      setDeleteData(config);
-    }
-  };
+  const [APIKEY, setAPIKEY] = useState(
+    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHJpbmciLCJleHAiOjIyMzI0MDUyNjl9._FSuIemMlKRz2RD5kAV3QJHDFrjghHewmkWMzyil_DM"
+  );
   useEffect(() => {
-    const getData = async (fetchConfig) => {
-      setIsPending(true);
+    const fetchData = async () => {
       try {
-        const req = await fetch(url, { ...fetchConfig });
-        if (!req.ok) {
-          throw new Error(req.statusText);
+        setLoading(true);
+        let response;
+
+        // Tekshirish, agar so'rov DELETE bo'lsa, yoki emas
+        if (options.method && options.method.toUpperCase() === "DELETE") {
+          response = await fetch(url, {
+            ...options,
+            headers: {
+              ...options.headers,
+              // API keyni yuborish
+              Authorization: APIKEY,
+            },
+          });
+        } else {
+          response = await fetch(url, {
+            ...options,
+            headers: {
+              ...options.headers,
+              // API keyni yuborish
+              "Content-Type": "application/json", // POST so'rov bo'lsa, kontent turi
+              Authorization: APIKEY,
+            },
+          });
         }
-        if (method === "GET") {
-          const data = await req.json();
-          setData(data);
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
         }
-        setIsPending(false);
+
+        const responseData = await response.json();
+        setData(responseData);
         setError(null);
-      } catch (err) {
-        setIsPending(false);
-        setError(err.message);
-        console.log(err.message);
+      } catch (error) {
+        setError(error);
+        setData(null);
+      } finally {
+        setLoading(false);
       }
     };
-    if (method == "GET") {
-      getData({
-        method: method,
-        headers: headers,
-      });
-    }
-    if (method == "POST" && postData) {
-      getData(postData);
-    }
-    if (method == "DELETE") {
-      getData();
-    }
-    getData(deleteData);
-  }, [url, method, postData]);
-  if (method === "GET") {
-    return { data, isPending, error, postGetData };
-  } else {
-    return isPending, error, postGetData;
-  }
-};
+
+    fetchData();
+
+    // Cleanup function
+    return () => {
+      // Cleanup code if needed
+    };
+  }, [url]);
+
+  return { data, loading, error };
+}
+
+export default useFetch;

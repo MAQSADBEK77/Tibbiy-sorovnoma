@@ -1,28 +1,26 @@
-import { useFetch } from "../hooks/useFetch";
+import useFetch from "../hooks/useFetch";
 import Pending from "../components/Pending";
 import Pagination from "../components/Pagination";
 import { useState } from "react";
 function AllTest() {
   const [URL, setURL] = useState(
-    "https://tibbiy-sorovnomaa.onrender.com/question/?page=1&limit=8"
+    "http://api.onko-fergana.uz/question/?id=0&topic_id=0&page=1&limit=10"
   );
   const { data, isPending } = useFetch(URL);
   console.log(data);
   function changePagination(value) {
-    setURL(
-      `https://tibbiy-sorovnomaa.onrender.com/question/?page=${value}&limit=8`
-    );
+    setURL(`http://api.onko-fergana.uz/question/?page=${value}&limit=10`);
   }
   return (
     <div className="flex flex-col items-end">
-      <div className="flex justify-between flex-wrap gap-6 mt-10">
+      <div className="flex lg:justify-end justify-between px-4 lg:px-0 flex-wrap gap-6 mt-10">
         <Pending isPending={isPending} />
         {data &&
           data.data.map((question) => {
             return (
               <div
                 key={question.id}
-                className="card w-[350px] bg-neutral text-neutral-content">
+                className="card w-[350px] bg-neutral text-neutral-content hover:transition-all hover:scale-105 hover:bg-orange-300">
                 <div className="card-body">
                   <h2 className="card-title">
                     {question.id}) {question.question}
