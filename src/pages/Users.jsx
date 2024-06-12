@@ -1,7 +1,16 @@
 import useFetch from "../hooks/useFetch";
 import Pending from "../components/Pending";
 function Users() {
-  const { data, isPending } = useFetch("http://api.onko-fergana.uz/user");
+  const { data, isPending } = useFetch("https://onko-fergana.uz/user");
+  // const {
+  //   data: deleteData,
+  //   loading: deleteLoading,
+  //   error: deleteError,
+  //   refetch: refetchDelete,
+  // } = useFetch(`http://api.onko-fergana.uz/user/del?id=1`, "DELETE");
+  function clickDeleteBtn(user) {
+    console.log(user);
+  }
   return (
     <div className="container">
       <Pending isPending={isPending} />
@@ -38,7 +47,9 @@ function Users() {
                     <th>{user.id}</th>
                     <div className="flex gap-2 my-2">
                       {" "}
-                      <button className="btn btn-error btn-sm text-sm">
+                      <button
+                        onClick={() => clickDeleteBtn(user.id)}
+                        className="btn btn-error btn-sm text-sm">
                         DELETE
                       </button>
                     </div>

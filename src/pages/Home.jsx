@@ -6,14 +6,14 @@ import useFetch from "../hooks/useFetch";
 import Pending from "../components/Pending";
 function Home() {
   const [URL, setURL] = useState(
-    "http://api.onko-fergana.uz/statistika/?page=1&limit=5"
+    "https://onko-fergana.uz/statistika/?page=1&limit=5"
   );
   const { data, isPending } = useFetch(URL);
   const quetions = data && data.data;
   const testName = data && quetions[1].topic_name;
   function changePagination(value) {
     setURL(
-      `http://api.onko-fergana.uz/statistika/?id=0&topic_id=0&question_id=0&page=${value}&limit=5`
+      `https://onko-fergana.uz/statistika/?id=0&topic_id=0&question_id=0&page=${value}&limit=5`
     );
   }
   console.log(quetions);

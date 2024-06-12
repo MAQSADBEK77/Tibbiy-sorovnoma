@@ -4,12 +4,12 @@ import Pagination from "../components/Pagination";
 import { useState } from "react";
 function AllTest() {
   const [URL, setURL] = useState(
-    "http://api.onko-fergana.uz/question/?id=0&topic_id=0&page=1&limit=10"
+    "https://onko-fergana.uz/question/?id=0&topic_id=0&page=1&limit=10"
   );
   const { data, isPending } = useFetch(URL);
   console.log(data);
   function changePagination(value) {
-    setURL(`http://api.onko-fergana.uz/question/?page=${value}&limit=10`);
+    setURL(`https://onko-fergana.uz/question/?page=${value}&limit=10`);
   }
   return (
     <div className="flex flex-col items-end">

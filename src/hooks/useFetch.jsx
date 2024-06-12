@@ -1,65 +1,57 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
-function useFetch(url, options = {}) {
-  useState;
+// Custom useFetch hook with support for GET, POST, DELETE and Authentication
+const useFetch = (
+  url,
+  method = "GET",
+  body = null,
+  headers = {},
+  auth = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHJpbmciLCJleHAiOjIyMzQxOTgwMTN9.n_nrUuzjMBS3MEv0mWyyC6ZxZnEAdXzxnfpicKbaqno"
+) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [APIKEY, setAPIKEY] = useState(
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHJpbmciLCJleHAiOjIyMzI0MDUyNjl9._FSuIemMlKRz2RD5kAV3QJHDFrjghHewmkWMzyil_DM"
-  );
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        let response;
 
-        // Tekshirish, agar so'rov DELETE bo'lsa, yoki emas
-        if (options.method && options.method.toUpperCase() === "DELETE") {
-          response = await fetch(url, {
-            ...options,
-            headers: {
-              ...options.headers,
-              // API keyni yuborish
-              Authorization: APIKEY,
-            },
-          });
-        } else {
-          response = await fetch(url, {
-            ...options,
-            headers: {
-              ...options.headers,
-              // API keyni yuborish
-              "Content-Type": "application/json", // POST so'rov bo'lsa, kontent turi
-              Authorization: APIKEY,
-            },
-          });
-        }
+  const fetchData = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
 
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
+      const options = {
+        method,
+        headers: {
+          "Content-Type": "application/json",
+          ...headers,
+        },
+      };
 
-        const responseData = await response.json();
-        setData(responseData);
-        setError(null);
-      } catch (error) {
-        setError(error);
-        setData(null);
-      } finally {
-        setLoading(false);
+      if (auth) {
+        options.headers["Authorization"] = `Bearer ${auth}`;
       }
-    };
 
+      if (body) {
+        options.body = JSON.stringify(body);
+      }
+
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.statusText}`);
+      }
+
+      const result = await response.json();
+      setData(result);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
     fetchData();
+  }, [fetchData]);
 
-    // Cleanup function
-    return () => {
-      // Cleanup code if needed
-    };
-  }, [url]);
-
-  return { data, loading, error };
-}
+  return { data, loading, error, refetch: fetchData };
+};
 
 export default useFetch;

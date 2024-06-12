@@ -1,5 +1,5 @@
 import { useState } from "react";
-import  useFetch  from "../hooks/useFetch";
+import useFetch from "../hooks/useFetch";
 function AddUser() {
   const [name, setName] = useState(null);
   const [LastName, setLastName] = useState(null);
@@ -28,7 +28,7 @@ function AddUser() {
     password,
   };
   const { data, loading, error } = useFetch(
-    "https://bioetika.onrender.com/user/add",
+    "https://onko-fergana.uz/user/add",
     {
       method: "POST",
       body: postData,
