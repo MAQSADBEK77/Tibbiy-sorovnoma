@@ -6,7 +6,7 @@ function Pagination({ value, changePagination }) {
     paginationArray.push(i);
   }
   return (
-    <div className="join my-6">
+    <div className="join my-6 ">
       {paginationArray.map((item) => {
         return (
           <input
