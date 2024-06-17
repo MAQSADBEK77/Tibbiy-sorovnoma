@@ -173,7 +173,7 @@ function Header() {
         </label>
       </div>
       <div class="navbar bg-base-100">
-        <div class="navbar-start">
+        <div class="navbar-start sm:hidden flex">
           <div class="dropdown fixed left-4 z-50">
             <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
               <svg
