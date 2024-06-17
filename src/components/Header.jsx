@@ -98,11 +98,11 @@ function Header() {
       <div className="lg:hidden flex navbar items-start bg-base-100">
         <div className="flex-1 items-start">
           <div className="mt-2 flex items-center gap-5">
-            <a className="btn btn-primary bg-orange-500 text-2xl ml-2">
+            <a className="btn btn-primary bg-orange-500 text-2xl ml-2 sm:block hidden">
               IQRO Admin
             </a>
           </div>
-          <ul className="menu w-72 rounded-box flex-row text-xl gap-2 flex-nowrap">
+          <ul className="menu w-72 rounded-box flex-row text-xl gap-2 flex-nowrap menu-smm">
             <li>
               <details>
                 <summary>Users</summary>
