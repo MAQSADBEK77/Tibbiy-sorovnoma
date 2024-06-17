@@ -174,7 +174,7 @@ function Header() {
       </div>
       <div class="navbar bg-base-100">
         <div class="navbar-start">
-          <div class="dropdown fixed left-4">
+          <div class="dropdown fixed left-4 z-50">
             <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -229,7 +229,7 @@ function Header() {
               </li>
             </ul>
           </div>
-          <div class="navbar-center fixed right-4">
+          <div class="navbar-center fixed right-4 z-50">
             <a className="btn btn-primary bg-orange-500 text-2xl ml-6">
               IQRO Admin
             </a>
