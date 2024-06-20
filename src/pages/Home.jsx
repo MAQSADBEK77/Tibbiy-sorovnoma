@@ -1,10 +1,13 @@
 import RenderBarChart from "../components/RenderBarChart";
 import MiniSelect from "../components/MiniSelect";
 import { useState } from "react";
+
 import Pagination from "../components/Pagination";
 import useFetch from "../hooks/useFetch";
 import Pending from "../components/Pending";
+import { useNavigate } from "react-router-dom";
 function Home() {
+  const signOut = useNavigate();
   const [URL, setURL] = useState(
     "https://onko-fergana.uz/statistika/?page=1&limit=5"
   );
@@ -17,6 +20,7 @@ function Home() {
     );
   }
   console.log(quetions);
+signOut("login");
   return (
     <div className="flex flex-col items-end">
       <Pending isPending={isPending} />

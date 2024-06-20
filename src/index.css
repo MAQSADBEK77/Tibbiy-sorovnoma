@@ -18,3 +18,89 @@ body {
   max-width: 470px;
   margin: 0 auto;
 }
+
+/* src/LoginForm.css */
+
+.login-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  overflow: hidden;
+  z-index: 99;
+}
+
+.background-animation {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+
+.circle {
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.2);
+  position: absolute;
+}
+
+.circle.small {
+  width: 150px;
+  height: 150px;
+  background: rgba(255, 255, 255, 0.2);
+  position: absolute;
+  top: 20%;
+  left: 15%;
+}
+
+.login-form {
+  position: relative;
+  z-index: 1;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-title {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.input-container {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.login-button {
+  background: #fd9644;
+  color: white;
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
