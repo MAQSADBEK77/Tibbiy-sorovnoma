@@ -50,7 +50,7 @@ const LoginForm = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
           className="input-container">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email">Login:</label>
           <input
             type="email"
             id="email"
