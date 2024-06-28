@@ -24,7 +24,7 @@ function Header() {
       <div className="text-2xl bg-base-200 hidden lg:fixed lg:block right-0 left-0 top-0 md:bottom-0 md:right-auto">
         <div className="mt-6 flex items-center gap-5">
           <a className="btn btn-primary bg-orange-500 text-2xl ml-6">
-            IQRO Admin
+            Admin panel
           </a>
           <label className="swap swap-rotate">
             <input

@@ -12,7 +12,7 @@ function Users() {
     console.log(user);
   }
   return (
-    <div className="container">
+    <div className="container container-user">
       <Pending isPending={isPending} />
       <div className="overflow-x-auto mt-3">
         <table className="table table-xs table-pin-rows table-pin-cols">
