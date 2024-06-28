@@ -12,15 +12,21 @@ function Home() {
     "https://onko-fergana.uz/statistika/?page=1&limit=5"
   );
   const { data, isPending } = useFetch(URL);
+  console.log(data);
   const quetions = data && data.data;
   const testName = data && quetions[1].topic_name;
   function changePagination(value) {
+    console.log(value);
     setURL(
-      `https://onko-fergana.uz/statistika/?id=0&topic_id=0&question_id=0&page=${value}&limit=5`
+      `https://onko-fergana.uz/statistika/?id=0&topic_id=0&question_id=0&page=2&limit=5`
     );
   }
   console.log(quetions);
-signOut("login");
+  if (localStorage.getItem("login") == "true") {
+    console.log("KIRILDI");
+  } else {
+    signOut("login");
+  }
   return (
     <div className="flex flex-col items-end">
       <Pending isPending={isPending} />
@@ -31,6 +37,7 @@ signOut("login");
       <div className="flex flex-wrap gap-x-5 gap-y-12">
         {quetions &&
           quetions.map((item) => {
+            console.log(item);
             const resault = [
               {
                 name: "A variant",
@@ -67,7 +74,7 @@ signOut("login");
               <RenderBarChart
                 key={item.id}
                 data={resault}
-                title={`${item.id}-Test natijalari`}
+                title={`${item.question_id}-Test natijalari`}
                 quiz={item.question_name}
               />
             );

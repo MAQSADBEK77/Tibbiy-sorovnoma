@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import ReactDOM from "react-dom";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const signOut = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Bu yerda login logikasini yozish mumkin
-    alert("Tizimga kirish muvaffaqiyatli amalga oshirildi!");
+    if (email == "CAMU" && password == 7777) {
+      localStorage.setItem("login", "true");
+      signOut("/");
+    } else {
+      alert("Login yoki Parol notog'ri");
+    }
   };
 
   return ReactDOM.createPortal(
@@ -52,7 +57,6 @@ const LoginForm = () => {
           className="input-container">
           <label htmlFor="email">Login:</label>
           <input
-            type="email"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}

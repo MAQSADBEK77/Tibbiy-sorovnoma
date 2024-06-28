@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import user from "../images/user.png";
 function Header() {
   const [mode, setMode] = useState(
     localStorage.getItem("theme") !== null
@@ -87,10 +88,7 @@ function Header() {
           role="button"
           className="btn btn-ghost btn-circle avatar absolute bottom-14 left-10">
           <div className="w-16 rounded-full">
-            <img
-              alt="Tailwind CSS Navbar component"
-              src="https://media.licdn.com/dms/image/D4D03AQFIJmWk0mlarA/profile-displayphoto-shrink_100_100/0/1713947273906?e=1723075200&v=beta&t=ga2XuQBU7tUJ7TIDZ4fXkSxLlWsRZXXC2AUBaRTy2eI"
-            />
+            <img alt="Tailwind CSS Navbar component" src={user} />
           </div>
           <p>Usmonov Maqsadbek</p>
         </div>
