@@ -90,7 +90,7 @@ function Header() {
           <div className="w-16 rounded-full">
             <img alt="Tailwind CSS Navbar component" src={user} />
           </div>
-          <p>Usmonov Maqsadbek</p>
+          <p>Parpiyeva Odinaxon</p>
         </div>
       </div>
       <div className="lg:hidden sm:flex hidden navbar items-start bg-base-100">
