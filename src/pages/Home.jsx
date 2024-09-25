@@ -28,7 +28,7 @@ function Home() {
     signOut("login");
   }
   return (
-    <div className="flex flex-col items-end">
+    <div className="container-home flex flex-col items-end">
       <Pending isPending={isPending} />
       <div className="mt-8 mb-5">
         {" "}

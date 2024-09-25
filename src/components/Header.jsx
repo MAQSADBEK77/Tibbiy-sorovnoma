@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import user from "../images/user.png";
+import user from "../images/01.jpg";
 function Header() {
   const [mode, setMode] = useState(
     localStorage.getItem("theme") !== null
