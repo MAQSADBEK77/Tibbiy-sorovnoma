@@ -16,9 +16,8 @@ function Home() {
   const quetions = data && data.data;
   const testName = data && quetions[1].topic_name;
   function changePagination(value) {
-    console.log(value);
     setURL(
-      `https://onko-fergana.uz/statistika/?id=0&topic_id=0&question_id=0&page=2&limit=5`
+      `https://onko-fergana.uz/statistika/?id=0&topic_id=0&question_id=0&page=${value}&limit=5`
     );
   }
   console.log(quetions);

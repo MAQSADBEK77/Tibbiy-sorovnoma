@@ -7,9 +7,10 @@ function AllTest() {
     "https://onko-fergana.uz/question/?id=0&topic_id=0&page=1&limit=10"
   );
   const { data, isPending } = useFetch(URL);
-  console.log(data);
   function changePagination(value) {
-    setURL(`https://onko-fergana.uz/question/?page=${value}&limit=10`);
+    setURL(
+      `https://onko-fergana.uz/question/?id=0&topic_id=0&page=${value}&limit=10`
+    );
   }
   return (
     <div className="flex flex-col items-end">
@@ -23,7 +24,7 @@ function AllTest() {
                 className="card w-[350px] bg-neutral text-neutral-content hover:transition-all hover:scale-105 hover:bg-orange-300">
                 <div className="card-body">
                   <h2 className="card-title">
-                    {question.id}) {question.question}
+                    {question.id} {question.question}
                   </h2>
                   <p>{question.option_a}</p>
                   <p>{question.option_b}</p>
